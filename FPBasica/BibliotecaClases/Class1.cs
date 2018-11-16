@@ -8,5 +8,6 @@ namespace BibliotecaClases
 {
     public class Class1
     {
+        public string tuMadre;
     }
 }
