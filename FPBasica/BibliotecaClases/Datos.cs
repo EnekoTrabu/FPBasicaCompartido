@@ -10,6 +10,7 @@ namespace BibliotecaClases
     {
         public Datos()
         {
+            public string tuMadre();
         }
     }
 }
