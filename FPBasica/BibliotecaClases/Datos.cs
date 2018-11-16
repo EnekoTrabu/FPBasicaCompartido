@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaClases
 {
-    public class TUSMUERTOS
+    public class Datos
     {
     }
 }
