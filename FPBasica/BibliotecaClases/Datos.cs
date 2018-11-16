@@ -8,5 +8,8 @@ namespace BibliotecaClases
 {
     public class Datos
     {
+        public Datos()
+        {
+        }
     }
 }
