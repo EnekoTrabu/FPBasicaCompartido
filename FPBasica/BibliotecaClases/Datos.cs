@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace BibliotecaClases
 {
-    class Producto
+    public class Datos
     {
+        public Datos()
+        {
+            public string tuMadre();
+        }
     }
 }
