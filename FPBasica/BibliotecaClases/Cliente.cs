@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BibliotecaClases
 {
-    public class Datos
+    public class Cliente
     {
-        public Datos()
+        public Cliente()
         {
             public string tuMadre();
         }

@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\FPBasica",
+    "\\FPBasica\\BibliotecaClases",
+    "\\FPBasica\\CapaPresentacion"
   ],
+  "SelectedNode": "\\FPBasica\\BibliotecaClases\\Datos.cs",
   "PreviewInSolutionExplorer": false
 }
