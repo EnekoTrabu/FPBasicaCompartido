@@ -37,6 +37,24 @@ namespace CapaGestion
                 return elCasque.Message ;
             }
         }
+        private void InsertarProducto(Producto producto)
+        {
+            string InsertContacto = "INSERT INTO producto (codigo, codbarras, descripcion, idmarca, precio, stock, pesobruto, pesoneto, estanteria, altura, estante) VALUES(@codigo, @codbarras, @descripcion, @idmarca, @precio, @stock, @pesobruto, @pesoneto, @estanteria, @altura, @estante);";
+            MySqlCommand cmdIContacto = new MySqlCommand(InsertContacto, conexion);
+            cmdIContacto.Parameters.AddWithValue("@codigo", nombre);
+            cmdIContacto.Parameters.AddWithValue("@codbarras", email);
+            cmdIContacto.Parameters.AddWithValue("@descripcion", nombre);
+            cmdIContacto.Parameters.AddWithValue("@idmarca", email);
+            cmdIContacto.Parameters.AddWithValue("@precio", nombre);
+            cmdIContacto.Parameters.AddWithValue("@stock", email);
+            cmdIContacto.Parameters.AddWithValue("@pesobruto", nombre);
+            cmdIContacto.Parameters.AddWithValue("@pesoneto", email);
+            cmdIContacto.Parameters.AddWithValue("@estanteria", nombre);
+            cmdIContacto.Parameters.AddWithValue("@altura", email);
+            cmdIContacto.Parameters.AddWithValue("@estante", nombre);
+      
+            cmdIContacto.ExecuteNonQuery();
+        }
 
     }
 }
