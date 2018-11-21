@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,10 @@ namespace BibliotecaClases
         public string Nif { get; set; }
         public string Nombre { get; set; }
         public string Direccion { get; set; }
-        public string Logo { get; set; }
+        public Image Logo { get; set; }
 
-        public Empresa(string nif, string nombre, string direccion, string logo)
+
+        public Empresa(string nif, string nombre, string direccion, Image logo)
         {
             this.Nif = nif;
             this.Nombre = nombre;
