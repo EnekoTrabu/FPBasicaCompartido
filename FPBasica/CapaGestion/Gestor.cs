@@ -43,19 +43,19 @@ namespace CapaGestion
 	       {	        
 		       string InsertContacto = "INSERT INTO producto (codigo, codbarras, descripcion, idmarca, precio, stock, pesobruto, pesoneto, estanteria, altura, estante) VALUES(@codigo, @codbarras, @descripcion, @idmarca, @precio, @stock, @pesobruto, @pesoneto, @estanteria, @altura, @estante);";
                MySqlCommand cmdIContacto = new MySqlCommand(InsertContacto, conexion);
-               cmdIContacto.Parameters.AddWithValue("@codigo", nombre);
-               cmdIContacto.Parameters.AddWithValue("@codbarras", email);
-               cmdIContacto.Parameters.AddWithValue("@descripcion", nombre);
-               cmdIContacto.Parameters.AddWithValue("@idmarca", email);
-               cmdIContacto.Parameters.AddWithValue("@precio", nombre);
-               cmdIContacto.Parameters.AddWithValue("@stock", email);
-               cmdIContacto.Parameters.AddWithValue("@pesobruto", nombre);
-               cmdIContacto.Parameters.AddWithValue("@pesoneto", email);
-               cmdIContacto.Parameters.AddWithValue("@estanteria", nombre);
-               cmdIContacto.Parameters.AddWithValue("@altura", email);
-               cmdIContacto.Parameters.AddWithValue("@estante", nombre);
+               cmdIContacto.Parameters.AddWithValue("@codigo", producto.Codigo);
+               cmdIContacto.Parameters.AddWithValue("@codbarras", producto.CodBarras);
+               cmdIContacto.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+               cmdIContacto.Parameters.AddWithValue("@idmarca", producto.IdMarca);
+               cmdIContacto.Parameters.AddWithValue("@precio", producto.Precio);
+               cmdIContacto.Parameters.AddWithValue("@stock", producto.Stock);
+               cmdIContacto.Parameters.AddWithValue("@pesobruto", producto.PesoBruto);
+               cmdIContacto.Parameters.AddWithValue("@pesoneto", producto.PesoNeto);
+               cmdIContacto.Parameters.AddWithValue("@estanteria", producto.Estanteria);
+               cmdIContacto.Parameters.AddWithValue("@altura", producto.Altura);
+               cmdIContacto.Parameters.AddWithValue("@estante", producto.Estante);
                cmdIContacto.ExecuteNonQuery();
-                return true;
+               return true;
 	       }
 	       catch (Exception)
            {
