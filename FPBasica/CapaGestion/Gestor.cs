@@ -37,7 +37,7 @@ namespace CapaGestion
                 return elCasque.Message ;
             }
         }
-        private void InsertarProducto(Producto producto)
+        private bool InsertarProducto(Producto producto)
         {
            try 
 	       {	        
@@ -55,10 +55,11 @@ namespace CapaGestion
                cmdIContacto.Parameters.AddWithValue("@altura", email);
                cmdIContacto.Parameters.AddWithValue("@estante", nombre);
                cmdIContacto.ExecuteNonQuery();
+                return true;
 	       }
-	       catch (Exception elCasque)
+	       catch (Exception)
            {
-                return elCasque.Message ;
+                return false;
            }
         }
         private List<Producto> classicSelectProducto(string atributo, string valor){

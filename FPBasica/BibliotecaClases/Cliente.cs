@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaClases
 {
-    public class Cliente
+    public class Cliente : IEquatable<Cliente>
     {
         public string Nif { get; set; }
         public string Nombre { get; set; }
@@ -28,6 +28,20 @@ namespace BibliotecaClases
             this.LugarEntrega = lugarEntrega;
         }
 
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Cliente);
+        }
 
+        public bool Equals(Cliente other)
+        {
+            return other != null &&
+                   Nif == other.Nif;
+        }
+
+        public override int GetHashCode()
+        {
+            return -146653734 + EqualityComparer<string>.Default.GetHashCode(Nif);
+        }
     }
 }
