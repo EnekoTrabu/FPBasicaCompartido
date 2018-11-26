@@ -8,5 +8,14 @@ namespace BibliotecaClases
 {
     class Estanteria
     {
+        public int IdEstanteria { get; set; }
+
+        public Estanteria(){
+        
+        }
+
+        public Estanteria(int idEstanteria){
+            this.IdEstanteria = IdEstanteria;
+        }
     }
 }
