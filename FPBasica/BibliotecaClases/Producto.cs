@@ -9,9 +9,10 @@ namespace BibliotecaClases
     public class Producto : IEquatable<Producto>
     {
         public string Codigo { get; set; }
-        public string CodBarras { get; set; }
         public string Descripcion { get; set; }
         public int IdMarca { get; set; }
+        public string IdFamilia { get; set; }
+        public string IdSubfamilia { get; set; }
         public float Precio { get; set; }
         public int Stock { get; set; }
         public string PesoBruto { get; set; }
@@ -20,12 +21,14 @@ namespace BibliotecaClases
         public int Altura { get; set; }
         public string Estante { get; set; }
 
-        public Producto(string codigo, string codBarras, string descripcion, int idMarca, float precio, int stock, string pesoBruto, string pesoNeto, string estanteria, int altura, string estante)
+        public Producto(string codigo, string descripcion, int idMarca, string idFamilia, string idSubfamilia, float precio, int stock, string pesoBruto, string pesoNeto, string estanteria, int altura, string estante)
         {
             Codigo = codigo;
             CodBarras = codBarras;
             Descripcion = descripcion;
             IdMarca = idMarca;
+             IdFamilia = idFamilia;
+             IdSubfamilia = idSubfamilia;
             Precio = precio;
             Stock = stock;
             PesoBruto = pesoBruto;

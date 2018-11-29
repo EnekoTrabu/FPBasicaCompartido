@@ -41,12 +41,13 @@ namespace CapaGestion
         {
            try 
 	       {	        
-		       string InsertContacto = "INSERT INTO producto (codigo, codbarras, descripcion, idmarca, precio, stock, pesobruto, pesoneto, estanteria, altura, estante) VALUES(@codigo, @codbarras, @descripcion, @idmarca, @precio, @stock, @pesobruto, @pesoneto, @estanteria, @altura, @estante);";
-               MySqlCommand cmdIContacto = new MySqlCommand(InsertContacto, conexion);
+		       string InsertProducto = "INSERT INTO producto (codigo, descripcion, idmarca, idfamilia, idsubfamilia,  precio, stock, pesobruto, pesoneto, estanteria, altura, estante) VALUES(@codigo, @codbarras, @descripcion, @idmarca, @precio, @stock, @pesobruto, @pesoneto, @estanteria, @altura, @estante);";
+               MySqlCommand cmdIContacto = new MySqlCommand(InsertProducto, conexion);
                cmdIContacto.Parameters.AddWithValue("@codigo", producto.Codigo);
-               cmdIContacto.Parameters.AddWithValue("@codbarras", producto.CodBarras);
                cmdIContacto.Parameters.AddWithValue("@descripcion", producto.Descripcion);
                cmdIContacto.Parameters.AddWithValue("@idmarca", producto.IdMarca);
+               cmdIContacto.Parameters.AddWithValue("@idfamilia", producto.IdFamilia);
+               cmdIContacto.Parameters.AddWithValue("@idsubfamilia", producto.IdSubfamilia);
                cmdIContacto.Parameters.AddWithValue("@precio", producto.Precio);
                cmdIContacto.Parameters.AddWithValue("@stock", producto.Stock);
                cmdIContacto.Parameters.AddWithValue("@pesobruto", producto.PesoBruto);
@@ -62,8 +63,10 @@ namespace CapaGestion
                 return false;
            }
         }
-        private List<Producto> classicSelectProducto(string atributo, string valor){
-            string SelectDatos = "SELECT * FROM producto WHERE @atributo=@valor;";
+        private List<Producto> SelectPorAtributo(string atributo, string valor){
+           try 
+	       {	        
+		        string SelectDatos = "SELECT * FROM producto WHERE @atributo=@valor;";
                 MySqlCommand cmdS = new MySqlCommand(SelectDatos, conexion);
                 cmdS.Parameters.AddWithValue("@atributo", atributo);
                 cmdS.Parameters.AddWithValue("@valor", valor);
@@ -78,13 +81,36 @@ namespace CapaGestion
                 conexion.Close();
                 
                 return listado;
+	       }
+	       catch (Exception elCasque)
+	       {
+
+		        return elCasque.Message;
+	       }
         }
-        private void classicSelectProducto(string trozoDescripcion){
-            string SelectDatos = "SELECT * FROM producto WHERE producto.descripcion LIKE @valor;";
+        private List<Producto> SelectPorDescripccion(string trozoDescripcion){
+            if(trozoDescripcion==""){
+                string SelectDatos = "SELECT * FROM producto;";
+                MySqlCommand cmdS = new MySqlCommand(SelectDatos, conexion);
+
+            }else{
+
+                string SelectDatos = "SELECT * FROM producto WHERE producto.descripcion LIKE @valor;";
                 MySqlCommand cmdS = new MySqlCommand(SelectDatos, conexion);
                 cmdS.Parameters.AddWithValue("@valor", ("%"+ trozoDescripcion+ "%"));
-                MySqlDataReader Lector = cmdS.ExecuteReader();
-                List<string> listado = new List<string>();
+            }
+            
+            MySqlDataReader Lector = cmdS.ExecuteReader();
+            List<Producto> listado = new List<Producto>();
+            while (Lector.Read())
+            {
+                listado.Add(new Producto());
+ 
+            }
+                Lector.Close();
+                conexion.Close();
+                
+                return listado;
         }
         public string DarAltaProducto(Producto nuevoProducto){
 
