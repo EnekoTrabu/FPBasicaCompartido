@@ -63,7 +63,7 @@ namespace CapaGestion
                 return false;
            }
         }
-        private List<Producto> SelectPorAtributo(string atributo, string valor){
+        public List<Producto> SelectPorAtributo(string atributo, string valor){
            try 
 	       {	        
 		        string SelectDatos = "SELECT * FROM producto WHERE @atributo=@valor;";
@@ -88,7 +88,7 @@ namespace CapaGestion
 		        return elCasque.Message;
 	       }
         }
-        private List<Producto> SelectPorDescripccion(string trozoDescripcion){
+        public List<Producto> SelectPorDescripccion(string trozoDescripcion){
             if(trozoDescripcion==""){
                 string SelectDatos = "SELECT * FROM producto;";
                 MySqlCommand cmdS = new MySqlCommand(SelectDatos, conexion);
