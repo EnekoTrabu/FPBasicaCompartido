@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaGestion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ namespace CapaPresentacion
 {
     static class Program
     {
+        public static Gestor gestor = new Gestor();
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>

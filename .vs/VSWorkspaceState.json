@@ -3,9 +3,8 @@
     "",
     "\\FPBasica",
     "\\FPBasica\\BibliotecaClases",
-    "\\FPBasica\\CapaGestion",
     "\\FPBasica\\CapaPresentacion"
   ],
-  "SelectedNode": "\\FPBasica\\CapaGestion\\Gestor.cs",
+  "SelectedNode": "\\FPBasica\\BibliotecaClases\\Cliente.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BibliotecaClases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,29 @@ namespace CapaPresentacion
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtAltura.Text = "";
+            txtCodigo.Text = "";
+            txtDescripcion.Text = "";
+            txtEstante.Text = "";
+            txtEstanteria.Text = "";
+            txtFamilia.Text = "";
+            txtMarca.Text = "";
+            txtPesoBruto.Text = "";
+            txtPesoNeto.Text = "";
+            txtPrecio.Text = "";
+            txtStock.Text = "";
+            txtSubfamilia.Text = "";
+            
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            Producto productoNuevo = new Producto(txtCodigo.Text, txtDescripcion.Text, txtMarca.Text, txtFamilia.Text, txtSubfamilia.Text, txtPrecio.Text, txtStock.Text, txtPesoBruto.Text,txtPesoNeto.Text, txtEstanteria.Text, (int) txtAltura.Text, txtEstante.Text) ;
+            MessageBox.Show(Program.gestor.DarAltaProducto(productoNuevo));
         }
     }
 }
