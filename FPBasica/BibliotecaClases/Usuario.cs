@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace BibliotecaClases
 {
-    class Usuario : IEquatable<Usuario>
+    public class Usuario : IEquatable<Usuario>
     {
         public int id { get; set; }
         public string usuario { get; set; }

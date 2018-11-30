@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaClases
 {
-    class Estanteria
+    public class Estanteria
     {
         public int IdEstanteria { get; set; }
 

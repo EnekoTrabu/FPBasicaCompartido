@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaClases
 {
-    class Marca : IEquatable<Marca>
+   public  class Marca : IEquatable<Marca>
     {
         public int idMarca { get; set; }
         public string nombre { get; set; }

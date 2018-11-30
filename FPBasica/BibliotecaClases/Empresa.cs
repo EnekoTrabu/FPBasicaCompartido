@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaClases
 {
-    class Empresa : IEquatable<Empresa>
+   public class Empresa : IEquatable<Empresa>
     {
         public string Nif { get; set; }
         public string Nombre { get; set; }

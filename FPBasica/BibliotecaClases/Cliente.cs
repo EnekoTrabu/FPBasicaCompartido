@@ -24,7 +24,7 @@ namespace BibliotecaClases
             this.Nombre = nombre;
             this.Apellido1 = apellido1;
             this.Apellido2 = Apellido2;
-            this.Direccion = direccion,
+            this.Direccion = direccion;
             this.LugarEntrega = lugarEntrega;
         }
 

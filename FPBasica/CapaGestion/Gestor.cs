@@ -55,10 +55,10 @@ namespace CapaGestion
                 
                     return familias;
 	        }
-	        catch (Exception elCasque)
+	        catch (Exception)
 	        {
 
-		        return elCasque.Message;
+		        throw;
 	        }
         }
         public List<Subfamilia> ListarSubfamilias(){
@@ -68,21 +68,21 @@ namespace CapaGestion
 		        string SelectSubfamilia = "SELECT * FROM subfamilia;";
                 MySqlCommand cmdS = new MySqlCommand(SelectSubfamilia, conexion);
                 MySqlDataReader Lector = cmdS.ExecuteReader();
-                List<Familia> familias = new List<Familia>();
+                List<Subfamilia> subfamilias = new List<Subfamilia>();
                 while (Lector.Read())
                 {
-                    familias.Add(new Subfamilia(Lector["idfamilia"].ToString(), Lector["idsubfamilia"].ToString(), Lector["idstring"].ToString(), Lector["descripcion"].ToString()));
+                    subfamilias.Add(new Subfamilia(Lector["idfamilia"].ToString(), Lector["idsubfamilia"].ToString(), Lector["idstring"].ToString(), Lector["descripcion"].ToString()));
  
                 }
                     Lector.Close();
                     conexion.Close();
                 
-                    return familias;
+                    return subfamilias;
 	        }
-	        catch (Exception elCasque)
+	        catch (Exception)
 	        {
 
-		        return elCasque.Message;
+		       throw;
 	        }
         }
         private bool InsertarProducto(Producto producto)
@@ -124,15 +124,15 @@ namespace CapaGestion
                 {
                         listado.Add(new Producto(Lector["codigo"].ToString(),
                                                     Lector["descripcion"].ToString(),
-                                                    (int) Lector["idmarca"].ToString,
-                                                    (int) Lector["idfamilia"].ToString(),
-                                                    (int) Lector["idsubfamilia"].ToString(),
-                                                    Lector["precio"].ToString(),
-                                                    (int) Lector["stock"].ToString(),
+                                                    int.Parse(Lector["idmarca"].ToString()),
+                                                    Lector["idfamilia"].ToString(),
+                                                    Lector["idsubfamilia"].ToString(),
+                                                    float.Parse(Lector["precio"].ToString()),
+                                                    int.Parse(Lector["stock"].ToString()),
                                                     Lector["pesobruto"].ToString(),
                                                     Lector["pesoneto"].ToString(),
                                                     Lector["estanteria"].ToString(),
-                                                    (int) Lector["altura"].ToString(),
+                                                    int.Parse(Lector["altura"].ToString()),
                                                     Lector["estante"].ToString()));
  
                 }
@@ -141,10 +141,10 @@ namespace CapaGestion
                 
                 return listado;
 	       }
-	       catch (Exception elCasque)
+	       catch (Exception)
 	       {
 
-		        return elCasque.Message;
+		        throw;
 	       }
         }
         public List<Producto> SelectPorDescripccion(string trozoDescripcion){
@@ -153,41 +153,66 @@ namespace CapaGestion
 		        if(trozoDescripcion==""){
                 string SelectDatos = "SELECT * FROM producto;";
                 MySqlCommand cmdS = new MySqlCommand(SelectDatos, conexion);
+                    MySqlDataReader Lector = cmdS.ExecuteReader();
+                    List<Producto> listado = new List<Producto>();
+                    while (Lector.Read())
+                    {
+                        listado.Add(new Producto(Lector["codigo"].ToString(),
+                                                            Lector["descripcion"].ToString(),
+                                                            int.Parse(Lector["idmarca"].ToString()),
+                                                            Lector["idfamilia"].ToString(),
+                                                            Lector["idsubfamilia"].ToString(),
+                                                            float.Parse(Lector["precio"].ToString()),
+                                                            int.Parse(Lector["stock"].ToString()),
+                                                            Lector["pesobruto"].ToString(),
+                                                            Lector["pesoneto"].ToString(),
+                                                            Lector["estanteria"].ToString(),
+                                                            int.Parse(Lector["altura"].ToString()),
+                                                            Lector["estante"].ToString()));
 
-            }else{
+                    }
+                    Lector.Close();
+                    conexion.Close();
+
+                    return listado;
+
+                }
+                else{
 
                 string SelectDatos = "SELECT * FROM producto WHERE producto.descripcion LIKE @valor;";
                 MySqlCommand cmdS = new MySqlCommand(SelectDatos, conexion);
                 cmdS.Parameters.AddWithValue("@valor", ("%"+ trozoDescripcion+ "%"));
-            }
+                    MySqlDataReader Lector = cmdS.ExecuteReader();
+                    List<Producto> listado = new List<Producto>();
+                    while (Lector.Read())
+                    {
+                        listado.Add(new Producto(Lector["codigo"].ToString(),
+                                                            Lector["descripcion"].ToString(),
+                                                            int.Parse(Lector["idmarca"].ToString()),
+                                                            Lector["idfamilia"].ToString(),
+                                                            Lector["idsubfamilia"].ToString(),
+                                                            float.Parse(Lector["precio"].ToString()),
+                                                            int.Parse(Lector["stock"].ToString()),
+                                                            Lector["pesobruto"].ToString(),
+                                                            Lector["pesoneto"].ToString(),
+                                                            Lector["estanteria"].ToString(),
+                                                            int.Parse(Lector["altura"].ToString()),
+                                                            Lector["estante"].ToString()));
+
+                    }
+                    Lector.Close();
+                    conexion.Close();
+
+                    return listado;
+                }
             
-            MySqlDataReader Lector = cmdS.ExecuteReader();
-            List<Producto> listado = new List<Producto>();
-            while (Lector.Read())
-            {
-                listado.Add(new Producto(Lector["codigo"].ToString(),
-                                            Lector["descripcion"].ToString(),
-                                            (int) Lector["idmarca"].ToString,
-                                            (int) Lector["idfamilia"].ToString(),
-                                            (int) Lector["idsubfamilia"].ToString(),
-                                            Lector["precio"].ToString(),
-                                            (int) Lector["stock"].ToString(),
-                                            Lector["pesobruto"].ToString(),
-                                            Lector["pesoneto"].ToString(),
-                                            Lector["estanteria"].ToString(),
-                                            (int) Lector["altura"].ToString(),
-                                            Lector["estante"].ToString()));
- 
-            }
-                Lector.Close();
-                conexion.Close();
-                
-                return listado;
+            
+            
 	        }
-	        catch (Exception elCasque)
+	        catch (Exception)
 	           {
 
-		            return elCasque.Message;
+		            throw;
 	           }
         }
         public string DarAltaProducto(Producto nuevoProducto){

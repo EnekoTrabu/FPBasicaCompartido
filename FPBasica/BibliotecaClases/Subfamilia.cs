@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaClases
 {
-    class Subfamilia : IEquatable<Subfamilia>
+    public class Subfamilia : IEquatable<Subfamilia>
     {
         public string IdSubFamilia { get; set; }
         public string IdString { get; set; }
