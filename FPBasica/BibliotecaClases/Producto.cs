@@ -24,7 +24,7 @@ namespace BibliotecaClases
         public Producto(string codigo, string descripcion, int idMarca, string idFamilia, string idSubfamilia, float precio, int stock, string pesoBruto, string pesoNeto, string estanteria, int altura, string estante)
         {
             Codigo = codigo;
-            CodBarras = codBarras;
+        
             Descripcion = descripcion;
             IdMarca = idMarca;
              IdFamilia = idFamilia;

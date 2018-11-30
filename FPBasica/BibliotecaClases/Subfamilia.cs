@@ -13,12 +13,13 @@ namespace BibliotecaClases
         public string Descripcion { get; set; }
         public string IdFamilia { get; set; }
 
-        public Subfamilia(string idSubFamilia, string idString, string descripcion, string idFamilia)
+        public Subfamilia(string idSubFamilia, string idFamilia , string idString, string descripcion)
         {
             IdSubFamilia = idSubFamilia;
+            IdFamilia = idFamilia;
             IdString = idString;
             Descripcion = descripcion;
-            IdFamilia = idFamilia;
+            
         }
 
         public Subfamilia()

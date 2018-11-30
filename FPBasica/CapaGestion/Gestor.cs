@@ -37,6 +37,54 @@ namespace CapaGestion
                 return elCasque.Message ;
             }
         }
+        public List<Familia> ListarFamilias(){
+            IniciarConexion();
+            try 
+	        {	        
+		        string SelectFamilia = "SELECT * FROM familia;";
+                MySqlCommand cmdS = new MySqlCommand(SelectFamilia, conexion);
+                MySqlDataReader Lector = cmdS.ExecuteReader();
+                List<Familia> familias = new List<Familia>();
+                while (Lector.Read())
+                {
+                    familias.Add(new Familia(Lector["idfamilia"].ToString(), Lector["idstring"].ToString(), Lector["descripcion"].ToString()));
+ 
+                }
+                    Lector.Close();
+                    conexion.Close();
+                
+                    return familias;
+	        }
+	        catch (Exception elCasque)
+	        {
+
+		        return elCasque.Message;
+	        }
+        }
+        public List<Subfamilia> ListarSubfamilias(){
+            IniciarConexion();
+            try 
+	        {	        
+		        string SelectSubfamilia = "SELECT * FROM subfamilia;";
+                MySqlCommand cmdS = new MySqlCommand(SelectSubfamilia, conexion);
+                MySqlDataReader Lector = cmdS.ExecuteReader();
+                List<Familia> familias = new List<Familia>();
+                while (Lector.Read())
+                {
+                    familias.Add(new Subfamilia(Lector["idfamilia"].ToString(), Lector["idsubfamilia"].ToString(), Lector["idstring"].ToString(), Lector["descripcion"].ToString()));
+ 
+                }
+                    Lector.Close();
+                    conexion.Close();
+                
+                    return familias;
+	        }
+	        catch (Exception elCasque)
+	        {
+
+		        return elCasque.Message;
+	        }
+        }
         private bool InsertarProducto(Producto producto)
         {
            try 
@@ -74,7 +122,18 @@ namespace CapaGestion
                 List<Producto> listado = new List<Producto>();
                 while (Lector.Read())
                 {
-                        listado.Add(new Producto());
+                        listado.Add(new Producto(Lector["codigo"].ToString(),
+                                                    Lector["descripcion"].ToString(),
+                                                    (int) Lector["idmarca"].ToString,
+                                                    (int) Lector["idfamilia"].ToString(),
+                                                    (int) Lector["idsubfamilia"].ToString(),
+                                                    Lector["precio"].ToString(),
+                                                    (int) Lector["stock"].ToString(),
+                                                    Lector["pesobruto"].ToString(),
+                                                    Lector["pesoneto"].ToString(),
+                                                    Lector["estanteria"].ToString(),
+                                                    (int) Lector["altura"].ToString(),
+                                                    Lector["estante"].ToString()));
  
                 }
                 Lector.Close();
@@ -89,7 +148,9 @@ namespace CapaGestion
 	       }
         }
         public List<Producto> SelectPorDescripccion(string trozoDescripcion){
-            if(trozoDescripcion==""){
+            try 
+	        {	        
+		        if(trozoDescripcion==""){
                 string SelectDatos = "SELECT * FROM producto;";
                 MySqlCommand cmdS = new MySqlCommand(SelectDatos, conexion);
 
@@ -104,13 +165,30 @@ namespace CapaGestion
             List<Producto> listado = new List<Producto>();
             while (Lector.Read())
             {
-                listado.Add(new Producto());
+                listado.Add(new Producto(Lector["codigo"].ToString(),
+                                            Lector["descripcion"].ToString(),
+                                            (int) Lector["idmarca"].ToString,
+                                            (int) Lector["idfamilia"].ToString(),
+                                            (int) Lector["idsubfamilia"].ToString(),
+                                            Lector["precio"].ToString(),
+                                            (int) Lector["stock"].ToString(),
+                                            Lector["pesobruto"].ToString(),
+                                            Lector["pesoneto"].ToString(),
+                                            Lector["estanteria"].ToString(),
+                                            (int) Lector["altura"].ToString(),
+                                            Lector["estante"].ToString()));
  
             }
                 Lector.Close();
                 conexion.Close();
                 
                 return listado;
+	        }
+	        catch (Exception elCasque)
+	           {
+
+		            return elCasque.Message;
+	           }
         }
         public string DarAltaProducto(Producto nuevoProducto){
 
