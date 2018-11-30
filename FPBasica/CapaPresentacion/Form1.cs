@@ -37,7 +37,7 @@ namespace CapaPresentacion
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Producto productoNuevo = new Producto(txtCodigo.Text, txtDescripcion.Text, txtMarca.Text, txtFamilia.Text, txtSubfamilia.Text, txtPrecio.Text, txtStock.Text, txtPesoBruto.Text,txtPesoNeto.Text, txtEstanteria.Text, (int) txtAltura.Text, txtEstante.Text) ;
+            Producto productoNuevo = new Producto(txtCodigo.Text, txtDescripcion.Text, int.Parse(txtMarca.Text), txtFamilia.Text, txtSubfamilia.Text, float.Parse(txtPrecio.Text), int.Parse(txtStock.Text), txtPesoBruto.Text,txtPesoNeto.Text, txtEstanteria.Text, int.Parse(txtAltura.Text), txtEstante.Text) ;
             MessageBox.Show(Program.gestor.DarAltaProducto(productoNuevo));
         }
     }
